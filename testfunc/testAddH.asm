@@ -10,9 +10,11 @@ SECTION .text
 _start:
   
   mov r8, h
-  mov rax, 12345
-  call addH
+  mov rax, 123456789100200
+  call toStr
   mov rax, h
+  call printsln
+;  mov rax, 123456789100200
   call printsln
 
   call exit

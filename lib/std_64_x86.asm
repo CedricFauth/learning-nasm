@@ -1,6 +1,5 @@
 ; String toString(Int number)
-addH:
-  
+toStr:
   push r9
   push rax
   push rdi
@@ -25,28 +24,25 @@ nextInt:
   ;push r8
   cmp rax, 0
   jnz nextInt
-
   pop r8
+
 concatFromStack:
   pop rax
   mov qword [r8], rax
   inc r8
   dec r9
   jnz concatFromStack
-  
   mov byte [r8], 0
-
   pop r8
-  ;mov byte [rax], "H"
-  ;mov byte [rax+1], 0h
   pop rdx
   pop rsi
   pop rdi
   pop rax
   pop r9
   ret
-; Integer toInt(String numberAsString)
 
+; Integer toInt(String numberAsString)
+; TODO
 ; int slen(String message)
 slen:
     push    rdi
@@ -108,23 +104,24 @@ printiln:
 
 ; void sprint(String message)
 prints:
-    push    rdx
-    push    rsi
-    push    rdi
-    push    rax
-    call    slen
+    push rdx
+    push rsi
+    push rdi
+    push rax
+    push rax
+    call slen
  
-    mov     rdx, rax
-    pop     rax
+    mov rdx, rax
+    pop rax
  
-    mov     rsi, rax
-    mov     rdi, 0
-    mov     rax, 1
+    mov rsi, rax
+    mov rdi, 0
+    mov rax, 1
     syscall
- 
-    pop     rdi
-    pop     rsi
-    pop     rdx
+    pop rax 
+    pop rdi
+    pop rsi
+    pop rdx
     ret
  
 ; void sprintLF(String message)
